@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.semid.BlurView
+    <com.semid.blurView.BlurView
         android:id="@+id/blurView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -32,5 +32,5 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </com.semid.BlurView>
+    </com.semid.blurView.BlurView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,8 @@ package com.example.myapplication
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.semid.BlurView
-import com.semid.RenderScriptBlur
+import com.semid.blurView.BlurView
+import com.semid.blurView.RenderScriptBlur
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<BlurView>(R.id.blurView).setupWith(decorView.findViewById(android.R.id.content))
             .setFrameClearDrawable(windowBackground)
-            .setBlurAlgorithm(RenderScriptBlur(this))
-            .setBlurRadius(radius)
-            .setBlurAutoUpdate(true)
-            .setHasFixedTransformationMatrix(true)
+            ?.setBlurAlgorithm(RenderScriptBlur(this))
+            ?.setBlurRadius(radius)
+            ?.setBlurAutoUpdate(true)
+            ?.setHasFixedTransformationMatrix(true)
     }
 }

@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-	 implementation 'com.github.babayevsemid:BlurView:1.0.0-alpha03'
+	 implementation 'com.github.babayevsemid:BlurView:1.0.0'
 }
 ``` 
 

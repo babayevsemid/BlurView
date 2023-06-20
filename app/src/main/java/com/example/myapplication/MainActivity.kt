@@ -2,34 +2,30 @@ package com.example.myapplication
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.databinding.ActivityMainBinding
 import com.semid.blurView.BlurView
 import com.semid.blurView.RenderScriptBlur
 
 
 class MainActivity : AppCompatActivity() {
+    private val binding by lazy (LazyThreadSafetyMode.NONE){
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
-        val radius = 1f
-
-        val decorView = window.decorView
-        //ViewGroup you want to start blur from. Choose root as close to BlurView in hierarchy as possible.
-        //ViewGroup you want to start blur from. Choose root as close to BlurView in hierarchy as possible.
-        //Set drawable to draw in the beginning of each blurred frame (Optional).
-        //Can be used in case your layout has a lot of transparent space and your content
-        //gets kinda lost after after blur is applied.
-        //Set drawable to draw in the beginning of each blurred frame (Optional).
-        //Can be used in case your layout has a lot of transparent space and your content
-        //gets kinda lost after after blur is applied.
-        val windowBackground: Drawable = decorView.background
-
-        findViewById<BlurView>(R.id.blurView).setupWith(decorView.findViewById(android.R.id.content))
-            .setFrameClearDrawable(windowBackground)
-            ?.setBlurAlgorithm(RenderScriptBlur(this))
-            ?.setBlurRadius(radius)
+        binding.blurView.setupWith(binding.root)
+            .setBlurAlgorithm(RenderScriptBlur(applicationContext))
+            ?.setBlurRadius(1f)
             ?.setBlurAutoUpdate(true)
             ?.setHasFixedTransformationMatrix(true)
+
+        binding.blurView.setOnClickListener {
+            binding.blurView.setBlurEnabled(!binding.blurView.isBlurEnabled)
+        }
     }
 }

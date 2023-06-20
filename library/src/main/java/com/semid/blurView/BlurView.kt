@@ -7,13 +7,16 @@ import android.util.Log
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
+import androidx.constraintlayout.widget.ConstraintLayout
 
 /**
- * FrameLayout that blurs its underlying content.
+ * ConstraintLayout that blurs its underlying content.
  * Can have children and draw them over blurred background.
  */
-class BlurView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
+class BlurView(context: Context, attrs: AttributeSet?) : ConstraintLayout(context, attrs) {
     var blurController: BlurController = NoOpController()
+    var isBlurEnabled = true
+        private set
 
     @ColorInt
     private var overlayColor = 0
@@ -92,6 +95,8 @@ class BlurView(context: Context, attrs: AttributeSet?) : FrameLayout(context, at
      * @see BlurViewFacade.setBlurEnabled
      */
     fun setBlurEnabled(enabled: Boolean): BlurViewFacade? {
+        isBlurEnabled = enabled
+
         return blurController.setBlurEnabled(enabled)
     }
 
